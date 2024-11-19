@@ -1,11 +1,13 @@
 
 from pygame import Surface
 import pygame
+# from interfaces.clickable import Clickable
+from .interfaces.clickable import Clickable
 
-class ImageButton():
+class ImageButton(Clickable):
     
-    def __init__(self,onClicked,x,y,path,screen:Surface):
-        self.onClicked = onClicked
+    def __init__(self,on_click,x,y,path,screen:Surface):
+        self.on_click = on_click
         self.x = x
         self.y = y
         self.path = path
@@ -21,3 +23,5 @@ class ImageButton():
 
         self.screen.blit(self.image2,(self.x,self.y))
         
+    def on_clicked(self,event):
+        self.on_click(event)        
