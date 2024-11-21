@@ -11,9 +11,11 @@ class CoffeeMakingScene(Scene):
   
 
     def update(self):
-        self._surface.fill('white')
-        table = pygame.image.load(settings.table_path).convert()
-        mug = pygame.image.load(settings.mug_path).convert_alpha()
-        table_rect = table.get_rect(center = self._surface.get_rect().center)
-        self._surface.blit(table,table_rect)
-        self._surface.blit(mug,mug.get_rect(center=table_rect.midtop))
+        self._surface.fill('white') 
+        ks = settings.kitchen_settings
+ 
+        base_cup = pygame.image.load(ks.base_cup_path).convert_alpha()
+        coffee_fill = pygame.image.load(ks.cup_black_coffee_path).convert_alpha()
+        base_cup.blit(coffee_fill, coffee_fill.get_rect(centerx=base_cup.get_rect().centerx - 50,centery = base_cup.get_rect().centery - 70))
+        self._surface.blit(base_cup, base_cup.get_rect(center=self._surface.get_rect().center))
+        

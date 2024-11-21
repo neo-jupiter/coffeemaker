@@ -1,3 +1,5 @@
+from . import kitchen_settings
+
 SCREEN_WIDTH =  1280
 SCREEN_HEIGHT =  720
 FPS =  60
@@ -35,3 +37,5 @@ dialogues = {
     "Make it extra creamy" : OrderOptions.MILK_COFFEE,
     "Can I have just the white stuff....you know what I am talking about" : OrderOptions.MILK 
 }
+
+
