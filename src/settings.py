@@ -7,6 +7,7 @@ table_path = "assets/table.jpg"
 mug_path = "assets/mug.png"
 main_menu_path = "assets/main_menu_draft.png"
 press_anywhere_path= "assets/press_anywhere_to_begin.png"
+rect1= "assets/Prototype Art/Rectangle 1.png"
 
 class OrderOptions:
     BLACK_COFFEE = "black_coffee"
