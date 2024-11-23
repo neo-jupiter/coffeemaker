@@ -11,6 +11,6 @@ class Scene(ABC):
         self._group.draw()
     
     @abstractmethod
-    def handleEvent(self):
+    def handleEvent(self,event):
         '''Handle event for the scene'''
         pass

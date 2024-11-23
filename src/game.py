@@ -35,14 +35,13 @@ class Game:
         
     def _proccess_events(self):
         for event in pygame.event.get():
+            self._current_scene.handleEvent(event)
             match event.type:
                 case pygame.QUIT:
                      pygame.quit()
                      exit()
                 case CustomEvent.SCENE_CHANGE_EVENT:
                     self._change_scene(event.event)
-                case _:
-                    self._current_scene.handleEvent(event)
     def _change_scene(self,event:SceneChangeEvent):
         match event.sceneType:
             case SceneType.COFFEEMAKING_SCENE:

@@ -16,7 +16,7 @@ spoon_sugar_path = _join_path("spoon_sugar.png")
 cup_coffee_particles_path = _join_path("cup_coffee.png")
 cup_sugar_particles_path = _join_path("cup_sugar.png")
 cup_water = _join_path("cup_water.png")
-cup_coffee_milk = _join_path("cup_milk.png")
+cup_milk_path = _join_path("cup_milk.png")
 cup_black_coffee_path = _join_path("cup_black_coffee.png")
 cup_milk_coffee_path = _join_path("cup_milk_coffee.png")
 

@@ -29,7 +29,7 @@ class LoadingScene(Scene):
             self.weight = 0.0 
         lerp_value_x = pygame.math.lerp(self.x,self.x + 50,self.weight)
         lerp_value_y = pygame.math.lerp(self.y,self.y + 50,self.weight)
-        print(f"lerp x : {lerp_value_x} , lerp y : {lerp_value_y}")
+        # print(f"lerp x : {lerp_value_x} , lerp y : {lerp_value_y}")
         self.press_to_play =  pygame.transform.scale(self.press_to_play,(lerp_value_x,lerp_value_y))
         background = pygame.image.load(settings.main_menu_path).convert()
         background = pygame.transform.scale(background,(1280,720))
