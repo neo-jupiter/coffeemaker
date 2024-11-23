@@ -13,7 +13,6 @@ class LoadingScene(Scene):
         self.EVENT_SCENE_CHANGE = pygame.USEREVENT + 1
         
         
-        
     def handleEvent(self,event:pygame.event.Event):
         
         match event.type:
@@ -24,18 +23,26 @@ class LoadingScene(Scene):
                 
                 
     def update(self):
-        self.weight  = self.weight + 0.01
-        if self.weight >= 1:
-            self.weight = 0.0 
-        lerp_value_x = pygame.math.lerp(self.x,self.x + 50,self.weight)
-        lerp_value_y = pygame.math.lerp(self.y,self.y + 50,self.weight)
-        print(f"lerp x : {lerp_value_x} , lerp y : {lerp_value_y}")
-        self.press_to_play =  pygame.transform.scale(self.press_to_play,(lerp_value_x,lerp_value_y))
-        background = pygame.image.load(settings.main_menu_path).convert()
-        background = pygame.transform.scale(background,(1280,720))
-        self._surface.blit(background,background.get_rect(center = self._surface.get_rect().center))
-        press_to_play_rect = self.press_to_play.get_rect(midbottom = self._surface.get_rect().midbottom)
-        press_to_play_rect.bottom = press_to_play_rect.bottom - 25
+        self.weight += 0.001
+        if self.weight >= 0.7:
+            self.weight = 0.0
 
-        
-        self._surface.blit(self.press_to_play,press_to_play_rect)
+        # Calculate lerp values for scaling
+        scale_x = int(self.x * (1.0 + self.weight))
+        scale_y = int(self.y * (1.0 + self.weight))
+        print(f"lerp x: {scale_x}, lerp y: {scale_y}")
+
+        # Scale the image
+        scaled_image = pygame.transform.scale(self.press_to_play, (scale_x, scale_y))
+
+        # Load and scale the background
+        background = pygame.image.load(settings.main_menu_path).convert()
+        background = pygame.transform.scale(background, (1280, 720))
+        self._surface.blit(background, background.get_rect(center=self._surface.get_rect().center))
+
+        # Calculate the rect of the scaled image to ensure it's centered
+        scaled_rect = scaled_image.get_rect(midbottom=self._surface.get_rect().midbottom)
+        scaled_rect.bottom -= 25  # Offset the position slightly from the bottom
+
+        # Blit the scaled image
+        self._surface.blit(scaled_image, scaled_rect)
